@@ -49,9 +49,9 @@ RUN useradd --create-home --home-dir $HOME user \
 ENV VSCODEEXT /var/vscode-ext
 RUN mkdir $VSCODEEXT \
     && chown -R user:user $VSCODEEXT \
-	&& su user -c "code --extensions-dir $VSCODEEXT --install-extension felixfbecker.php-intellisense --install-extension felixfbecker.php-debug --install-extension teabyii.ayu"
+	&& su user -c "code --extensions-dir $VSCODEEXT --install-extension felixfbecker.php-intellisense --install-extension felixfbecker.php-debug --install-extension teabyii.ayu --install-extension ms-azuretools.vscode-docker --install-extension mikestead.dotenv"
 
-COPY settings.json $HOME/.config/Code/User/settings.json
+COPY --chown=user:user settings.json $HOME/.config/Code/User/settings.json
 
 COPY start.sh /usr/local/bin/start.sh
 
